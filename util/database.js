@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('excelsheetdata', 'root', {
+const sequelize = new Sequelize('excelsheetdata', 'root', '', {
           dialect: 'mysql',
-          host: 'localhost'
+          host: 'localhost',
 });
 
 module.exports = sequelize;

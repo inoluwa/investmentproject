@@ -2,13 +2,14 @@ const Sequelize = require('sequelize');
 
 
 // imported sequelize from database
-const sequelize = require('./util/database');
+const sequelize = require('../util/database');
 
-const Expenditure = sequelize.define('Expenditure', {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
+const Expenditure = sequelize.define('FIDP_Analysis', {
+     id: {
+         type: Sequelize.INTEGER,
+         autoIncrement: true,
+         allowNull: false,
+         primaryKey: true
     },
     date: {
         type: Sequelize.DATE,
@@ -35,8 +36,11 @@ const Expenditure = sequelize.define('Expenditure', {
         type: Sequelize.STRING,
         allowNull: true,
     },
-    type:{
-        type:Sequelize.BOOLEAN,
+    // 1 Expenditure
+    // 2 Sales
+    // 
+    analysisType:{
+        type:Sequelize.INTEGER,
         allowNull:true,
 
     }
