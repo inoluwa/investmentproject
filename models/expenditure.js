@@ -36,11 +36,17 @@ const Expenditure = sequelize.define('FIDP_Analysis', {
         type: Sequelize.STRING,
         allowNull: true,
     },
+                        
     // 1 Expenditure
     // 2 Sales
     // 
     analysisType:{
         type:Sequelize.INTEGER,
+        allowNull:true,
+
+    },
+    isDeleted:{
+        type:Sequelize.BOOLEAN,
         allowNull:true,
 
     }
