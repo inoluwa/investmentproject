@@ -2,11 +2,6 @@ const sequelize = require('./util/database');
 const {authUser} = require('./basicAuth');
 
 
-//importing user content
-//const User = require('./models/user');
-
-//const Expenditure = require('./models/expenditure');
-
 const express = require('express');
 
 
@@ -21,10 +16,12 @@ app.use(bodyParser.json());
 app.use(cors())
 const postsDataRoute = require('./routes/analysisController');
 const registerRoute = require('./routes/usersController');
+const eggPickedRoute = require('./routes/eggPickedController');
 const { verifyToken } = require('./basicAuth');
 
 app.use('/api', registerRoute);
 app.use('/api', postsDataRoute );
+app.use('/api', eggPickedRoute);
 app.get('/', (req, res)=> {
 res.send('Home Page');
 

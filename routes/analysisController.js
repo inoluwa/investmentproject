@@ -34,7 +34,13 @@ router.post('/postData',async(req, res) => {
 router.get('/getAllPosts', async(req,res) => {
     try{
           const allPosts = await Post.findAll({where:{isDeleted:false}});
-          res.json(allPosts);
+
+
+
+          const dataResult={data:allPosts,
+        message:'Record fetched',
+    totalCount:allPosts.length}
+          res.json(dataResult);
 
       }catch(err) {
           res.json({message:err});
@@ -83,7 +89,7 @@ router.put('/updateRecord/:id', async(req, res) => {
   const getById = await Post.findOne( {where:{id:req.params.id}});
 
         if(!getById){
- res.status(400)
+ res.status(404).json({message:'Record is not found'});
         }
        const updatedRecord = await Post.update( {mortality: req.body.mortality,
         expenses_description: req.body.expenses_description,

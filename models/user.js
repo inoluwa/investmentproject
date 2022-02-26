@@ -15,10 +15,7 @@ const User = sequelize.define('userTb', {
     role_id: {
          type: Sequelize.INTEGER,
     },
-    // // email: {
-    // //     type: Sequelize.STRING,
-    // //     allowNull: false,
-    // },
+    
     username: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -38,6 +35,7 @@ const User = sequelize.define('userTb', {
 
     }
 });
+// here we are creating a relationship between user tb and role tb
 model.hasOne(User, {as: 'roleTb', foreignKey: 'role_id'});
 
 module.exports = User;
