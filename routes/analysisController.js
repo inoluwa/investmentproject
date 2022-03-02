@@ -21,13 +21,13 @@ router.post('/postData',async(req, res) => {
        analysisType:req.body.analysisType,
        isDeleted:false,
     });
-
-   
     try{
         const savedPostData = await post.save();
-        res.json(savedPostData);
+        let postResult={message:'Record inserted successfully', data:savedPostData}
+      return  res.json(postResult);
+      //postResult.message
     }catch (err) { 
-        res.json({message: err});
+        return res.json({message: err});
     }
 });
 

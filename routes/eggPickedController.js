@@ -18,8 +18,10 @@ router.post('/postEggRecord', async(req,res)=>{
 // after creating our post request
 //save object created into database
     try{
-        const savedEggModelRecord = await egg.save();
-        res.json(savedEggModelRecord);
+        const savedEggRecord = await egg.save();
+     
+        let result ={message:'Record inserted successfully', data:savedEggRecord}
+        return  res.json(result);
     }catch(err) {
         res.json({message:err})
     }
@@ -42,7 +44,7 @@ router.get('/getRecord/:id', async(req,res)=>{
 router.get('/allEggRecords', async(req,res)=>{
 try{
     const allRecord = await EggModel.findAll({where:{isDeleted:false}});
-    
+    // backend error
     const dataResult={data:allRecord,
         message:'Record fetched',
     totalCount:allRecord.length}
