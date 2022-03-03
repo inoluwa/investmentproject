@@ -20,9 +20,6 @@ const eggPickedRoute = require('./routes/eggPickedController');
 const { verifyToken } = require('./basicAuth');
 
 
-app.get('/dashboard', authUser, (req, res) => {
-    res.send('Dashboard Page');
-});
 
 
 // sync all models that are not
