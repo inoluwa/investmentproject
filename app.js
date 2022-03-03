@@ -19,13 +19,7 @@ const registerRoute = require('./routes/usersController');
 const eggPickedRoute = require('./routes/eggPickedController');
 const { verifyToken } = require('./basicAuth');
 
-app.use('/api', registerRoute);
-app.use('/api', postsDataRoute );
-app.use('/api', eggPickedRoute);
-app.get('/', (req, res)=> {
-res.send('Home Page');
 
-});
 app.get('/dashboard', authUser, (req, res) => {
     res.send('Dashboard Page');
 });
