@@ -1,7 +1,7 @@
 const sequelize = require('./util/database');
 const {authUser} = require('./basicAuth');
 
-
+require("dotenv").config();
 const express = require('express');
 
 
@@ -64,7 +64,7 @@ sequelize.sync();
 // app.post('/login', (req, res) => {
 
 // });
-
-app.listen(4000);
+const port= process.env.port||4000;
+app.listen(port);
  
 
