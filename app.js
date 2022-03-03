@@ -19,7 +19,16 @@ const registerRoute = require('./routes/usersController');
 const eggPickedRoute = require('./routes/eggPickedController');
 const { verifyToken } = require('./basicAuth');
 
+app.use('/api', registerRoute);
+app.use('/api', postsDataRoute );
+app.use('/api', eggPickedRoute);
+app.get('/', (req, res)=> {
+res.send('Home Page');
 
+});
+app.get('/dashboard', authUser, (req, res) => {
+    res.send('Dashboard Page');
+});
 
 
 // sync all models that are not
@@ -55,7 +64,10 @@ sequelize.sync();
 // app.post('/login', (req, res) => {
 
 // });
-const port= process.env.port||4000;
-app.listen(port);
+
+var port = process.env.PORT || 8000;
+app.listen(port, () => {
+    console.log("App is running on port " + port);
+});
  
 
