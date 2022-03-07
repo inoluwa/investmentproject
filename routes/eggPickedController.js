@@ -4,6 +4,7 @@ const sequelize = require('sequelize');
 const router = express.Router();
 const EggModel = require('../models/eggpicked');
 const res = require('express/lib/response');
+const {verifyToken} = require('../basicAuth')
 
 
 router.post('/postEggRecord', async(req,res)=>{
@@ -41,7 +42,7 @@ router.get('/getRecord/:id', async(req,res)=>{
     }
 });
 
-router.get('/allEggRecords', async(req,res)=>{
+router.get('/allEggRecords',verifyToken, async(req,res)=>{
 try{
     const allRecord = await EggModel.findAll({where:{isDeleted:false}});
     // backend error

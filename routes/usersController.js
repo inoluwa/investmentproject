@@ -99,7 +99,7 @@ try{
            );
            // save user token
            if(token){
-            return res.status(200).json({token, username:user.username, message:'Successfully logged in'});
+            return res.status(200).json({token, username:user.username, message:'Successfully logged in', statusCode:'00'});
            }
 
         }
